@@ -1,0 +1,41 @@
+[package]
+name = "near_groth16_verifier"
+version = "2.0.0"
+edition = "2021"
+authors = ["NEAR ZK Contributors"]
+description = "Groth16 zero-knowledge proof verifier for NEAR Protocol smart contracts - SDK 5.x compatible with circom 2.x support"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/nearprotocol/near-groth16-verifier"
+documentation = "https://docs.rs/near_groth16_verifier"
+readme = "README.md"
+keywords = ["near", "blockchain", "zksnark", "groth16", "zero-knowledge", "circom"]
+categories = ["cryptography", "blockchain", "wasm"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = "5.24"
+borsh = "1.6"
+uint = "0.9"
+hex = "0.4"
+
+[dev-dependencies]
+near-sdk = { version = "5.24", features = ["unit-testing"] }
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
+
+[features]
+default = []
+# Enable for testing without NEAR runtime
+standalone = []
+
+[[example]]
+name = "basic_contract"
+path = "examples/contract.rs"

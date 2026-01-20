@@ -1,0 +1,25 @@
+# Rust build artifacts
+target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# WASM binaries
+*.wasm
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (for circuit development)
+node_modules/
+
+# NOTE: Audit files and internal docs are committed to git
+# They will be in the PRIVATE remote only (see README for workflow)
